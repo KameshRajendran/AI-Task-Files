@@ -1,0 +1,50 @@
+=
+- Strictly do not execute the plan without confirmation. Always ask for confirmation before proceeding.
+- Test classes and their methods must not include summaries or comments under any circumstances.
+- Provide only the necessary code. For example, when adding a new item to an existing enum, share just the code changes.
+- If any code changes are needed in an existing code file, please suggest only the necessary code modifications. Avoid recreating the entire file. 
+
+context:
+ include:
+    - docs/project_overview.md: Library overview.
+    - docs/architecture.mermaid: System architecture.
+    - docs/task.md Current development tasks and requirements
+    - docs/status.md: Project progress and state
+
+# Key Mindsets
+
+**1** **Simplicity**: Write simple and straightforward code.
+**2** **Readability**: Ensure your code is easy to read and understand.
+**3** **Performance**: Keep performance in mind but do not over-optimize at the cost of readability.
+**4** **Maintainability**: Write code that is easy to maintain and update.
+**5** **Testability**: Ensure your code is easy to test.
+**6** **Reusability**: Write reusable components and functions.
+
+
+# Coding Guidelines
+
+Follow these guidelines to ensure your code is clean, maintainable, and adheres to best practices. Remember, less code is better. Lines of code = Debt.
+
+- A single class file **must not exceed 500 lines** of code. Large files like `PdfViewerBase` should be split into focused components.
+- Each TypeScript class must reside in its own `.ts` file with meaningful naming.
+- Each class must have a single, clearly defined responsibility (Single Responsibility Principle).
+- Avoid "God objects" – classes should not manage unrelated functionalities.
+- Each method should have ≤ 40 lines of code.
+- Avoid deep nesting (`if`/`else`/`switch`) – refactor into smaller methods.
+- Use meaningful names (`initializePageRender()` instead of `start()` or `process1()`).
+- Public methods must include JSDoc documentation comments with param and return types.
+- Use parameter objects for methods with more than 4 parameters.
+- All code must be null-safe with proper type checking.
+- Use async/await for all asynchronous operations with proper error handling.
+- Never catch generic `Error` without specific handling. 
+- Use TypeScript's strict mode with proper interface typing.
+- Handle Blazor interop calls efficiently with proper state management.
+
+## Blazor-Specific Guidelines
+
+- Use `_dotnetInstance.invokeMethodAsync()` consistently for all .NET calls. 
+- Use TypeScript interfaces that match C# models for data exchange.
+- Implement virtual DOM techniques for rendering PDF pages efficiently.
+- Cache rendered content appropriately to minimize re-rendering.
+- Handle both WebAssembly and Server-side Blazor operation modes.
+- Ensure proper error boundary handling for JavaScript exceptions.

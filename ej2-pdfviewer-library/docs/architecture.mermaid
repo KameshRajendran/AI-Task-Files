@@ -1,0 +1,99 @@
+graph TD
+    subgraph sfpdfviewer
+        subgraph pdfviewer
+            subgraph base
+                BAF[pdfviewer-base-annotation-features.ts]
+                BHH[pdfviewer-base-hyperlink-handler.ts]
+                
+                subgraph pdfviewer-base
+                    PAEF[pdfviewer-base-element-removal.ts]
+                    PBD[pdfviewer-base-destroy.ts]
+                    PBDL[pdfviewer-base-download.ts]
+                    PBPA[pdfviewer-base-public-api.ts]
+                    PBSH[pdfviewer-base-scroll-handler.ts]
+                    PBS[pdfviewer-base-selection.ts]
+                    PBKN[pdfviewer-base-keyboard-navigation.ts]
+                    PBCM[pdfviewer-base-core-methods.ts]
+                    PBMH[pdfviewer-base-mouse-handler.ts]
+                    PBWH[pdfviewer-base-windows-handler.ts]
+                    PBGH[pdfviewer-base-gesture-handler.ts]
+                    PBCP[pdfviewer-base-comment-panel.ts]
+                    PBCMN[pdfviewer-base-context-menu.ts]
+                    PBP[pdfviewer-base-popup.ts]
+                    PBEM[pdfviewer-base-event-management.ts]
+                    PBAH[pdfviewer-base-annotation-handler.ts]
+                    PBFFM[pdfviewer-base-form-fields-manager.ts]
+                    PBR[pdfviewer-base-rendering.ts]
+                    PBHH[pdfviewer-base-hyperlink-handler.ts]
+                    PBU[pdfviewer-base-utils.ts]
+                    PBSSM[pdfviewer-base-storage-state-management.ts]
+                    PBAF[pdfviewer-base-annotation-features.ts]
+                    PBUI[pdfviewer-base-ui-interaction.ts]
+                    PBIE[pdfviewer-base-import-export.ts]
+                    PBEH[pdfviewer-base-event-handler.ts]
+                    PBTI[pdfviewer-base-touch-interaction.ts]
+                    PBDM[pdfviewer-base-document-management.ts]
+                end
+                
+                BUA[blazor-ui-adaptor.ts]
+                I[interfaces.ts]
+                T[types.ts]
+            end
+            
+            A[annotation/index.ts]
+            TL[TextLayer.ts]
+            SIG[Signature.ts]
+            
+            subgraph navigation
+                PN[page-navigation.ts]
+            end
+            
+            subgraph annotation
+                TMA[TextMarkupAnnotation.ts]
+            end
+        end
+    end
+    
+    %% Main relationships
+    PAEF --> BAF
+    BAF --> BHH
+    PN --> BAF
+    PN --> BHH
+    
+    %% Base module relationships
+    PDFB --> PAEF
+    PDFB --> PBD
+    PDFB --> PBDL
+    PDFB --> PBPA
+    PDFB --> PBSH
+    PDFB --> PBS
+    PDFB --> PBKN
+    PDFB --> PBCM
+    PDFB --> PBMH
+    PDFB --> PBWH
+    PDFB --> PBGH
+    PDFB --> PBCP
+    PDFB --> PBCMN
+    PDFB --> PBP
+    PDFB --> PBEM
+    PDFB --> PBAH
+    PDFB --> PBFFM
+    PDFB --> PBR
+    PDFB --> PBHH
+    PDFB --> PBU
+    PDFB --> PBSSM
+    PDFB --> PBAF
+    PDFB --> PBUI
+    PDFB --> PBIE
+    PDFB --> PBEH
+    PDFB --> PBTI
+    PDFB --> PBDM
+    
+    %% External relationships
+    SyncBase[syncfusion/ej2-base]
+    SyncPopups[syncfusion/ej2-popups]
+    SyncDrawings[syncfusion/ej2-drawings]
+    
+    BAF --> SyncBase
+    BAF --> SyncPopups
+    BAF --> SyncDrawings
